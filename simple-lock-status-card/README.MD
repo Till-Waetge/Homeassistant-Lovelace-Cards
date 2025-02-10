@@ -1,0 +1,1 @@
+# Homeassistant Lock Status Card
