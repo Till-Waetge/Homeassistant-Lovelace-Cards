@@ -12,9 +12,14 @@ class BathStatusCard extends HTMLElement {
                         font-size: 1.5em;
                         font-weight: bold;
                         transition: background-color 0.3s ease;
+                        background: linear-gradient(to left, #FF0D01, #B2544F); /* Default gradient for occupied */
                     }
                     .bath-status-icon {
                         font-size: 1.5em;
+                        background-color: #d3d3d3; /* Gray background for the icon */
+                        padding: 8px;
+                        border-radius: 50%;
+			color: black;
                     }
                     .bath-status-text {
                         flex-grow: 1;
@@ -35,17 +40,14 @@ class BathStatusCard extends HTMLElement {
         const state = hass.states[entityId].state;
         const occupiedText = this.config.occupied_text || 'Besetzt';
         const freeText = this.config.free_text || 'Frei';
-        
+
         if (state === 'on') {
             this.textElement.textContent = occupiedText;
-            this.content.style.backgroundColor = 'red';
-            this.content.style.color = 'white';            
+            this.content.style.background = 'linear-gradient(to left, #FF0D01, #B2544F)'; // Correct red gradient for occupied
             this.iconElement.innerHTML = '<ha-icon icon="mdi:door-closed-lock"></ha-icon>';
-
         } else {
             this.textElement.textContent = freeText;
-            this.content.style.backgroundColor = 'green';
-            this.content.style.color = 'white';
+            this.content.style.background = 'linear-gradient(to left, #00BB2D, #4CAF50)'; // Correct green gradient for free
             this.iconElement.innerHTML = '<ha-icon icon="mdi:door-open"></ha-icon>';
         }
     }
