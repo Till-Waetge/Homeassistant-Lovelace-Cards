@@ -1,1 +1,1 @@
-# Homeassistant Card Templates
+# Homeassistant Lock Status Card
